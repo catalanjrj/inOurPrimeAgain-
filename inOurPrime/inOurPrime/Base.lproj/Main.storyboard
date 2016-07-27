@@ -62,6 +62,9 @@
                                                 <state key="normal" title="Do The Math">
                                                     <color key="titleColor" red="0.96247507330320481" green="0.94007028625733735" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="doTheMath:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gRD-Xk-2bQ"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR2-ac-bTe">
                                                 <rect key="frame" x="0.0" y="79" width="546" height="137"/>
@@ -84,6 +87,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.31937749339999999" green="0.31937749339999999" blue="0.31937749339999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="GreatestCommonFactorButton" destination="OQc-oR-zPs" id="3LM-Qi-RwZ"/>
+                        <outlet property="answerLabel" destination="N7x-zn-isR" id="cUE-kG-Dsz"/>
+                        <outlet property="doMathButton" destination="5z3-It-bn3" id="Blx-JO-rXv"/>
+                        <outlet property="factorsButton" destination="sXn-oD-1NP" id="mMv-bX-B05"/>
+                        <outlet property="instructionsLabel" destination="IR2-ac-bTe" id="TSC-2r-MSG"/>
+                        <outlet property="numberTextField" destination="hSd-kb-xmn" id="x0D-O6-CIp"/>
+                        <outlet property="primeNumberButton" destination="kNn-rd-13o" id="Ocn-RV-SU6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
