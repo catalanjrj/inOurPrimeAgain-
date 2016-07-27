@@ -70,8 +70,26 @@
 -(void)checkFactors:(NSString *)numbersString{
     NSArray *factorsArray = [[NSArray alloc]init];
     factorsArray = [self.brain RetreiveFactorsForNumber:[numbersString integerValue]];
+    if(factorsArray){
+        self.answerLabel.text = [self formatString:factorsArray];
+    }else{
+        self.answerLabel.text = [NSString stringWithFormat:@"There are no factors for %@",numbersString];
+    }
+}
+// calculate the greatest common factor between two number
+-(void)checkGreatesCommonFactor:(NSString *)numbersString{
+    NSArray *numbers = [[NSArray alloc]initWithArray:[numbersString componentsSeparatedByString:@" "]];
+    NSUInteger firstNumber = [numbers[0] integerValue];
+    NSUInteger seconNumber =[numbers[1]integerValue];
+    NSInteger greatestCommonFactor = [self.brain getGreatestCommonFactor:firstNumber numberTwo:seconNumber];
     
-
+    if(greatestCommonFactor > 0){
+        self.answerLabel.text = [NSString stringWithFormat:@"The greatest common factor between %lu and %lu is %ld",(unsigned long)firstNumber,
+        (unsigned long)seconNumber, (long)greatestCommonFactor];
+    }else{
+        self.answerLabel.text = [NSString stringWithFormat:@"There are no common factors"];
+    
+    }
 }
 
 
