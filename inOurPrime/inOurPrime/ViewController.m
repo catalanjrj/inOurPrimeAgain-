@@ -54,5 +54,25 @@
     [self.numberTextField resignFirstResponder];
 }
 
+#pragma mark - calculations 
+
+//check if number is prime
+-(void)checkForPrimeNumber:(NSString *)numbersString{
+    if([self.brain isPrimeNumber:[numbersString integerValue]]){
+        self.answerLabel.text = [NSString stringWithFormat:@"%@ is a prime number",numbersString];
+    }else{
+        self.answerLabel.text = [NSString stringWithFormat:@"%@ is not a prime number",numbersString];
+    
+    }
+}
+
+// retrieve factors for number provided
+-(void)checkFactors:(NSString *)numbersString{
+    NSArray *factorsArray = [[NSArray alloc]init];
+    factorsArray = [self.brain RetreiveFactorsForNumber:[numbersString integerValue]];
+    
+
+}
+
 
 @end
