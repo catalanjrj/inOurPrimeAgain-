@@ -35,27 +35,26 @@
                                                 <state key="normal" title="Prime Number?">
                                                     <color key="titleColor" red="0.96247507330320481" green="0.94007028625733735" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="chooseCalculation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E4p-Ol-SFU"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OQc-oR-zPs">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OQc-oR-zPs">
                                                 <rect key="frame" x="366" y="0.0" width="180" height="63"/>
                                                 <color key="backgroundColor" red="0.68192070890000001" green="0.57393170959999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="GCF">
                                                     <color key="titleColor" red="0.96247507330320481" green="0.94007028625733735" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="sXn-oD-1NP">
-                                                <rect key="frame" x="183" y="0.0" width="180" height="63"/>
-                                                <color key="backgroundColor" red="0.68192070890000001" green="0.57393170959999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Factors">
-                                                    <color key="titleColor" red="0.96247507330320481" green="0.94007028625733735" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
+                                                <connections>
+                                                    <action selector="chooseCalculation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="luF-qF-PAc"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Number Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hSd-kb-xmn">
                                                 <rect key="frame" x="0.0" y="238" width="546" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5z3-It-bn3">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5z3-It-bn3">
                                                 <rect key="frame" x="0.0" y="418" width="546" height="87"/>
                                                 <color key="backgroundColor" red="0.61568627450980395" green="0.47450980392156861" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
@@ -63,21 +62,31 @@
                                                     <color key="titleColor" red="0.96247507330320481" green="0.94007028625733735" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="doTheMath:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gRD-Xk-2bQ"/>
+                                                    <action selector="doTheMath:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VDc-wE-NnD"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR2-ac-bTe">
-                                                <rect key="frame" x="0.0" y="79" width="546" height="137"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7x-zn-isR">
                                                 <rect key="frame" x="0.0" y="311" width="546" height="66"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR2-ac-bTe">
+                                                <rect key="frame" x="0.0" y="79" width="546" height="137"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="sXn-oD-1NP">
+                                                <rect key="frame" x="183" y="0.0" width="180" height="63"/>
+                                                <color key="backgroundColor" red="0.68192070890000001" green="0.57393170959999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Factors">
+                                                    <color key="titleColor" red="0.96247507330320481" green="0.94007028625733735" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="chooseCalculation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4s8-7h-CmZ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>

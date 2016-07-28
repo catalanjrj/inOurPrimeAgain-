@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *factorsButton;
 @property (weak, nonatomic) IBOutlet UIButton *GreatestCommonFactorButton;
 
+
 @property(strong,nonatomic)PrimeBrain *brain;
 
 -(NSString *)formatString:(NSArray *)numbersArray;
@@ -36,23 +37,55 @@
     //initialize PrimeBrain
     self.brain = [[PrimeBrain alloc]init];
 }
-//create action that does math for selection
-- (IBAction)doTheMath:(id)sender {
-    if ([sender isEqual:self.primeNumberButton]) {
-        [self checkForPrimeNumber:self.numberTextField.text];
-        
-    }else if ([sender isEqual:self.factorsButton]){
-        [self checkFactors:self.numberTextField.text];
-    
-    }else if ([self.numberTextField.text componentsSeparatedByString:@" "].count >=2){
-        [self checkGreatesCommonFactor:self.numberTextField.text];
-        
-    }else{
-        [self displayError:@"Error!!" message:@"Enter two numbers seperated by a space"];
-    
-    }
-    [self.numberTextField resignFirstResponder];
+//creat Alert for error 
+- (void)displayError:(NSString *)title message:(NSString *)message {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okBUtton = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:okBUtton];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
+//create action that does math for selection
+- (IBAction)doTheMath:(UIButton*)sender {
+    switch (sender.tag) {
+        case 0:
+            [self checkForPrimeNumber:self.numberTextField.text];
+            break;
+        case 1:
+            [self checkFactors:self.numberTextField.text];
+            break;
+        case 2:
+             if ([self.numberTextField.text componentsSeparatedByString:@" "].count >=2){
+                  [self checkGreatesCommonFactor:self.numberTextField.text];
+             }else{
+                 [self displayError:@"Error!!" message:@"Enter two numbers seperated by a space"];
+
+             }
+            [self.numberTextField resignFirstResponder];
+
+            break;
+        case 3:
+            break;
+        default:
+
+            break;
+    }
+}
+
+//    if ((sender.tag + 1)) {
+//        [self checkForPrimeNumber:self.numberTextField.text];
+//        
+//    }else if (sender.tag + 1){
+//        [self checkFactors:self.numberTextField.text];
+//    
+//    }else if ([self.numberTextField.text componentsSeparatedByString:@" "].count >=2){
+//        [self checkGreatesCommonFactor:self.numberTextField.text];
+//        
+//    }else{
+//        [self displayError:@"Error!!" message:@"Enter two numbers seperated by a space"];
+//    
+//    }
+//    [self.numberTextField resignFirstResponder];
+//}
 
 #pragma mark - calculations 
 
@@ -91,6 +124,51 @@
     
     }
 }
+// format array into readable sentances for answers
+-(NSString *)formatString:(NSArray *)numbersArray{
+NSString *answerString = @"";
+    if(numbersArray.count > 1){
+        answerString = [NSString stringWithFormat:@"The factors for %@ are", self.numberTextField.text];
+    }else{
+        answerString = [NSString stringWithFormat:@"The factor for %@ is", self.numberTextField.text];
+    }
+    
+    for (NSString *factor in numbersArray){
+        if(numbersArray.count == 1){
+            answerString = [answerString stringByAppendingString:[NSString stringWithFormat:@"%@",factor]];
+        }else if ((numbersArray.count == 2) && (factor == [numbersArray firstObject])){
+            answerString = [answerString stringByAppendingString:[NSString stringWithFormat:@"%@",factor]];
+        }else if(factor == [numbersArray lastObject]){
+            answerString = [answerString stringByAppendingString:[NSString stringWithFormat:@"and %@",factor]];
+        }else{
+            answerString = [answerString stringByAppendingString:[NSString stringWithFormat:@"%@",factor]];
+        
+        }
+        
+        }
+    answerString = [answerString stringByAppendingString:@"."];
+    return answerString;
+        }
+- (IBAction)chooseCalculation:(UIButton*)sender {
+    self.doMathButton.tag = (sender.tag);
+    switch (sender.tag) {
+        case 0:
+            self.instructionsLabel.text = @"enter a number to check if is prime";
+            break;
+        case 1:
+            self.instructionsLabel.text = @"Enter a number to see all factors for that number";
+            break;
+        case 2:
+            self.instructionsLabel.text = @"Enter two numbers seperated by a space to see the greates common factor";
+            break;
+                default:
+            self.instructionsLabel.text = @"";
+            self.doMathButton.enabled = NO;
+            break;
+    }
+}
+
+
 
 
 @end
