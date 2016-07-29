@@ -84,7 +84,7 @@
     self.doMathButton.tag = (sender.tag);
     switch (sender.tag) {
         case 0:
-            self.instructionsLabel.text = @"enter a number to check if is prime";
+            self.instructionsLabel.text = @"Enter a number to check if it is prime";
             break;
         case 1:
             self.instructionsLabel.text = @"Enter a number to see all factors for that number";
