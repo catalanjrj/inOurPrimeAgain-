@@ -36,15 +36,26 @@
     
     //initialize PrimeBrain
     self.brain = [[PrimeBrain alloc]init];
+    
+    // disable math button until a calculation is chosen
+    self.doMathButton.enabled = NO;
+    self.instructionsLabel.text = @"";
+    self.answerLabel.text = @"";
+    
+    self.numberTextField.delegate = self;
 }
-//creat Alert for error 
+
+#pragma mark - UIButton Actions
+
+//creat UiAlert for not entering two seperate numbers!
 - (void)displayError:(NSString *)title message:(NSString *)message {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okBUtton = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:okBUtton];
     [self presentViewController:alertController animated:YES completion:nil];
 }
-//create action that does math for selection
+
+//create method that does math for selected calculation
 - (IBAction)doTheMath:(UIButton*)sender {
     switch (sender.tag) {
         case 0:
@@ -63,29 +74,41 @@
             [self.numberTextField resignFirstResponder];
 
             break;
-        case 3:
+     
+        default:
+            break;
+    }
+}
+// set up method to choose calculation
+- (IBAction)chooseCalculation:(UIButton*)sender {
+    self.doMathButton.tag = (sender.tag);
+    switch (sender.tag) {
+        case 0:
+            self.instructionsLabel.text = @"enter a number to check if is prime";
+            break;
+        case 1:
+            self.instructionsLabel.text = @"Enter a number to see all factors for that number";
+            break;
+        case 2:
+            self.instructionsLabel.text = @"Enter two numbers seperated by a space to see the greates common factor";
             break;
         default:
-
+            self.instructionsLabel.text = @"";
+            self.doMathButton.enabled = NO;
             break;
     }
 }
 
-//    if ((sender.tag + 1)) {
-//        [self checkForPrimeNumber:self.numberTextField.text];
-//        
-//    }else if (sender.tag + 1){
-//        [self checkFactors:self.numberTextField.text];
-//    
-//    }else if ([self.numberTextField.text componentsSeparatedByString:@" "].count >=2){
-//        [self checkGreatesCommonFactor:self.numberTextField.text];
-//        
-//    }else{
-//        [self displayError:@"Error!!" message:@"Enter two numbers seperated by a space"];
-//    
-//    }
-//    [self.numberTextField resignFirstResponder];
-//}
+
+#pragma mark - textField Delegate
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    self.numberTextField.text =@"";
+    self.doMathButton.enabled = YES;
+    self.answerLabel.text = @"";
+
+}
+
 
 #pragma mark - calculations 
 
@@ -149,26 +172,5 @@ NSString *answerString = @"";
     answerString = [answerString stringByAppendingString:@"."];
     return answerString;
         }
-- (IBAction)chooseCalculation:(UIButton*)sender {
-    self.doMathButton.tag = (sender.tag);
-    switch (sender.tag) {
-        case 0:
-            self.instructionsLabel.text = @"enter a number to check if is prime";
-            break;
-        case 1:
-            self.instructionsLabel.text = @"Enter a number to see all factors for that number";
-            break;
-        case 2:
-            self.instructionsLabel.text = @"Enter two numbers seperated by a space to see the greates common factor";
-            break;
-                default:
-            self.instructionsLabel.text = @"";
-            self.doMathButton.enabled = NO;
-            break;
-    }
-}
-
-
-
 
 @end
